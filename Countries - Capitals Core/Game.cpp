@@ -5,15 +5,30 @@ Game::Game()
 {
 }
 
-int Game::loadFromFile(std::string capitalsFile, std::string countriesFile)
+int Game::loadFromFile(const std::string& capitalsFile, const std::string& countriesFile)
 {
-    std::ifstream capitals(capitalsFile);
-    std::ifstream countries(countriesFile);
+    pairs.clear();
 
-    if (!capitals.is_open() || !countries.is_open())
-        return 1;
+    std::ifstream capFile(capitalsFile);
+    std::ifstream couFile(countriesFile);
 
-    //todo загрузка данных
+    if (!capFile.is_open() || !couFile.is_open()) return 1;
+
+    std::string capLine, couLine;
+    while (std::getline(capFile, capLine) && std::getline(couFile, couLine))
+    {
+        if (!capLine.empty() && capLine.back() == '\n')
+            capLine.pop_back();
+        if (!couLine.empty() && couLine.back() == '\n')
+            couLine.pop_back();
+
+        pairs.push_back({ couLine, capLine });
+    }
 
     return 0;
+}
+
+std::vector<CountryCapital> Game::getPairs() const
+{
+    return pairs;
 }

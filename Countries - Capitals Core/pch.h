@@ -11,5 +11,7 @@
 #include "framework.h"
 #include <string>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 #endif //PCH_H
