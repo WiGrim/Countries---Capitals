@@ -51,13 +51,18 @@ CountryCapital Game::getNextPair()
 
 bool Game::checkAnswer(const CountryCapital& pair, const std::string& userAnswer, bool byCapital)
 {
-    if (byCapital)
-        return userAnswer == pair.capital;
-    else
-        return userAnswer == pair.country;
+    bool correct = (byCapital) ? (pair.capital == userAnswer) : (pair.country == userAnswer);
+    if (correct)
+        ++score;
+    return correct;
 }
 
 std::vector<CountryCapital> Game::getPairs() const
 {
     return pairs;
+}
+
+int Game::getScore() const
+{
+    return score;
 }

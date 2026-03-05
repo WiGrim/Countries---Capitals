@@ -18,8 +18,10 @@ public:
     bool checkAnswer(const CountryCapital& pair, const std::string& userAnswer, bool byCapital);
 
     std::vector<CountryCapital> getPairs() const;
+    int getScore() const;
 private:
     std::vector<CountryCapital> pairs;
+    int score = 0;
 
     std::vector<int> randomizedIndices;
     int currentIndex = 0;
