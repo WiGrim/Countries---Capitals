@@ -75,3 +75,17 @@ TEST(GameTest, ShufflePair)
         ASSERT_TRUE(found);
     }
 }
+
+TEST(GameTest, CheckAnswer)
+{
+    Game game;
+    game.loadFromFile("../../Countries - Capitals Tests/test_capitals.txt", "../../Countries - Capitals Tests/test_countries.txt");
+
+    auto pairs = game.getPairs();
+
+    ASSERT_TRUE(game.checkAnswer(pairs[0], "Париж", true));
+    ASSERT_TRUE(game.checkAnswer(pairs[0], "Франция", false));
+
+    ASSERT_FALSE(game.checkAnswer(pairs[0], "Берлин", true));
+    ASSERT_FALSE(game.checkAnswer(pairs[0], "Германия", false));
+}
