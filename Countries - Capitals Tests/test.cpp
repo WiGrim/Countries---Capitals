@@ -15,3 +15,12 @@ TEST(GameTest, LoadPairsFromFile)
 
     ASSERT_EQ(0, result);
 }
+
+TEST(GameTest, LoadFromInvalidFile)
+{
+    Game game;
+
+    int result = game.loadFromFile("wrong.txt", "wrong.txt");
+
+    ASSERT_NE(0, result);
+}
