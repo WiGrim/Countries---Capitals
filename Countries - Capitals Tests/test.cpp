@@ -1,6 +1,8 @@
 #include "pch.h"
+#include "Game.h"
 
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
+TEST(GameTest, ClassCreation)
+{
+    Game game;
+    ASSERT_NE(&game, nullptr);
 }
