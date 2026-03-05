@@ -109,3 +109,25 @@ TEST(GameTest, GameOver)
     ASSERT_TRUE(p.country.empty());
     ASSERT_TRUE(p.capital.empty());
 }
+
+TEST(GameTest, ScoreCounting)
+{
+    Game game;
+    game.loadFromFile("../../Countries - Capitals Tests/test_capitals.txt", "../../Countries - Capitals Tests/test_countries.txt");
+
+    auto pairs = game.getPairs();
+
+    ASSERT_EQ(game.getScore(), 0);
+
+    game.checkAnswer(pairs[0], "Париж", true);
+    ASSERT_EQ(game.getScore(), 1);
+
+    game.checkAnswer(pairs[0], "Франция", false);
+    ASSERT_EQ(game.getScore(), 2);
+
+    game.checkAnswer(pairs[0], "Берлин", true);
+    ASSERT_EQ(game.getScore(), 2);
+
+    game.checkAnswer(pairs[0], "Германия", false);
+    ASSERT_EQ(game.getScore(), 2);
+}
