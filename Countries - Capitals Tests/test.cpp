@@ -44,3 +44,34 @@ TEST(GameTest, LoadFromFile)
     ASSERT_EQ(pairs[2].capital, "Рим");
     ASSERT_EQ(pairs[2].country, "Италия");
 }
+
+TEST(GameTest, ShufflePair)
+{
+    Game game;
+    game.loadFromFile("../../Countries - Capitals Tests/test_capitals.txt", "../../Countries - Capitals Tests/test_countries.txt");
+
+    game.shufflePairs();
+
+    std::vector<CountryCapital> seen;
+    for (size_t i = 0; i < game.getPairs().size(); ++i)
+    {
+        auto p = game.getNextPair();
+        seen.push_back(p);
+    }
+
+    auto original = game.getPairs();
+    ASSERT_EQ(seen.size(), original.size());
+
+    for (const auto& p : original)
+    {
+        bool found = false;
+        for (const auto& s : seen)
+        {
+            if (p.capital == s.capital && p.country == s.country) {
+                found = true;
+                break;
+            }
+        }
+        ASSERT_TRUE(found);
+    }
+}
