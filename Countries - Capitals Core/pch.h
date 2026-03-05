@@ -13,5 +13,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <random>
+#include <algorithm>
 
 #endif //PCH_H
