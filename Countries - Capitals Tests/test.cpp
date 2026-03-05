@@ -89,3 +89,23 @@ TEST(GameTest, CheckAnswer)
     ASSERT_FALSE(game.checkAnswer(pairs[0], "Берлин", true));
     ASSERT_FALSE(game.checkAnswer(pairs[0], "Германия", false));
 }
+
+TEST(GameTest, GameOver)
+{
+    Game game;
+    game.loadFromFile("../../Countries - Capitals Tests/test_capitals.txt", "../../Countries - Capitals Tests/test_countries.txt");
+
+    game.shufflePairs();
+
+    size_t n = game.getPairs().size();
+
+    for (size_t i = 0; i < n; ++i)
+    {
+        auto p = game.getNextPair();
+        ASSERT_FALSE(p.country.empty());
+    }
+
+    auto p = game.getNextPair();
+    ASSERT_TRUE(p.country.empty());
+    ASSERT_TRUE(p.capital.empty());
+}
