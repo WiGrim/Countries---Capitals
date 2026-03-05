@@ -3,6 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="Countries - Capitals App/Countries - Capitals App.vcxproj" />
   <Project Path="Countries - Capitals Core/Countries - Capitals Core.vcxproj" />
   <Project Path="Countries - Capitals Tests/Countries - Capitals Tests.vcxproj" />
 </Solution>
