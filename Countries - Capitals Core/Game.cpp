@@ -49,6 +49,14 @@ CountryCapital Game::getNextPair()
     return pairs[randomizedIndices[currentIndex++]];
 }
 
+bool Game::checkAnswer(const CountryCapital& pair, const std::string& userAnswer, bool byCapital)
+{
+    if (byCapital)
+        return userAnswer == pair.capital;
+    else
+        return userAnswer == pair.country;
+}
+
 std::vector<CountryCapital> Game::getPairs() const
 {
     return pairs;

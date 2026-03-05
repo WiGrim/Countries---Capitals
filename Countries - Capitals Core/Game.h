@@ -15,6 +15,7 @@ public:
     int loadFromFile(const std::string& capitalsFile, const std::string& countriesFile);
     void shufflePairs();
     CountryCapital getNextPair();
+    bool checkAnswer(const CountryCapital& pair, const std::string& userAnswer, bool byCapital);
 
     std::vector<CountryCapital> getPairs() const;
 private:
